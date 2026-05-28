@@ -32,3 +32,5 @@ if __name__ == "__main__":
     print(product3.description)
     print(product3.price)
     print(product3.quantity)
+
+# готов к пулу

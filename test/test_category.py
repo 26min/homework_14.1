@@ -12,3 +12,5 @@ def test_category_init(first_category, second_category):
 
     assert first_category.product_count == 4
     assert second_category.product_count == 4
+
+# готов к пулу
