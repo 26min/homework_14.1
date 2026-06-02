@@ -1,7 +1,6 @@
 import json
 
 from src.category import Category
-from src.product import Product
 from src.utils import create_objects_from_json, read_json
 
 
@@ -36,13 +35,11 @@ def test_create_objects_from_json():
     assert isinstance(categories[0], Category)
     assert categories[0].name == "Электроника"
 
-    assert len(categories[0].products) == 1
-    assert isinstance(categories[0].products[0], Product)
-    assert categories[0].products[0].name == "Смартфон"
+    assert "Смартфон, 50000.0 руб. Остаток: 10 шт." in categories[0].products
 
 
 def test_create_objects_from_json_empty_products():
     sample_data = [{"name": "Пустая категория", "description": "Без товаров"}]
     categories = create_objects_from_json(sample_data)
     assert len(categories) == 1
-    assert categories[0].products == []
+    assert categories[0].products == ""
