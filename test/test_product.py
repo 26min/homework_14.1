@@ -75,3 +75,7 @@ def test_new_product_duplicate_lower_price():
 
     assert updated_prod.price == 31000.0
     assert updated_prod.quantity == 24
+
+
+def test_product_str(product):
+    assert str(product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."

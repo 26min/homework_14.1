@@ -13,3 +13,9 @@ def test_category_init(first_category, second_category):
 
     assert first_category.product_count == 4
     assert second_category.product_count == 4
+
+
+def test_category_str(first_category, second_category):
+    prod1 = first_category._Category__products[0]
+    prod2 = first_category._Category__products[1]
+    assert prod1 + prod2 == 2580000

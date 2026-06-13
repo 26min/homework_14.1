@@ -1,7 +1,6 @@
 import json
 
 import pytest
-from unicodedata import category
 
 from src.category import Category
 from src.utils import create_objects_from_json, read_json
@@ -14,6 +13,7 @@ def test_read_json(tmp_path):
 
     result = read_json(str(file_path))
     assert result == test_data
+
 
 def test_read_json_empty_or_error():
     # assert read_json("non_existent_file.json") == []
@@ -52,10 +52,14 @@ def test_create_objects_from_json_empty_or_error_products():
     assert len(categories) == 1
     assert categories[0].products == ""
 
+
 def test_create_objects_from_json_empty():
     sample_data = [{"name": "Пустая категория", "description": "Без товаров"}]
     categories = create_objects_from_json(sample_data)
 
     assert len(categories) == 1
-    assert categories[0].name == "Пустая категория" or categories[0].name == "Пустая category"
+    assert (
+        categories[0].name == "Пустая категория"
+        or categories[0].name == "Пустая category"
+    )
     assert categories[0].products == ""
