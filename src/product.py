@@ -14,11 +14,13 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if isinstance(other, Product):
-            current_total = self.price * self.quantity
-            other_total = other.price * other.quantity
-            return current_total + other_total
-        return NotImplemented
+        if type(other) is Product:
+            if isinstance(other, Product):
+                current_total = self.price * self.quantity
+                other_total = other.price * other.quantity
+                return current_total + other_total
+            return NotImplemented
+        raise TypeError
 
     @property
     def price(self) -> float:
