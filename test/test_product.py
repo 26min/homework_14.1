@@ -1,6 +1,8 @@
 import io
 import sys
 
+import pytest
+
 from src.product import Product
 
 
@@ -79,3 +81,15 @@ def test_new_product_duplicate_lower_price():
 
 def test_product_str(product):
     assert str(product) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+
+
+def test_product_init_zero_value_error():
+    with pytest.raises(ValueError) as e:
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+    assert str(e.value) == "Товар с нулевым или отрицательным количеством не может быть добавлен"
+
+
+def test_product_init_negative_value_error():
+    with pytest.raises(ValueError) as e:
+        Product("Бракованный товар", "Неверное количество", 100.0, -5)
+    assert str(e.value) == "Товар с нулевым или отрицательным количеством не может быть добавлен"
